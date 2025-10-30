@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charge meter</title>
+</head>
+
+<body>
+    <h2>Charge level calculator</h2>
+    <div>What's your name?</div>
+    <div>
+        <input id="user-name">
+    </div>
+    <div>
+        On a scale from 1 to 5,
+        how rested do you feel?
+    </div>
+    <div>
+        <input id="rest-level">
+        <button id="calculate" onclick="chargeCalculator()">Calculate</button>
+    </div>
+    <h2 id="output"></h2>
+
+    <script>
+        function chargeCalculator() {
+            const userName = document.getElementById("user-name").value;
+            const restLevel = document.getElementById("rest-level").value;
+
+            document.getElementById("output").innerHTML = `
+                Hello ${userName}, your charge level is at 
+                <span style="color: green;">${restLevel/5*100}%</span>!
+            `;
+        }
+    </script>
+</body>
+
+</html>
