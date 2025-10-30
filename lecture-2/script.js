@@ -1,5 +1,5 @@
 const piName = "Pi";
-const piValue = 3.14;
+const piValue = 3.14159;
 const diameter = 7;
 
 function helloHandler() {
