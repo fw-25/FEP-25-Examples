@@ -19,6 +19,7 @@ function pt() {
         ptOutput = "Keep up the good work!";
     }
 
+    document.getElementById('pt-output').innerHTML = ptOutput;
     console.log(ptOutput)
 }
 
