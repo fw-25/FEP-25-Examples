@@ -15,7 +15,8 @@ console.log(`green has index ${colors.indexOf("green")}`)
 
 colors[0] = "yellow";
 
-// Not possible with const: colors = [ "yellow", "green", "blue" ]
+// Not possible when the array is declared with const: 
+//     colors = [ "yellow", "green", "blue" ]
 
 console.log(`Roses are ${colors[0]}, 
     the sky is ${colors[2]}
@@ -34,10 +35,10 @@ const newString = myArray.join("... ");
 console.log(newString);
 console.log(colors.join(" and "))
 
-
 console.log("element-5".split("-")[0]);
 console.log("element-5".split("-")[1]);
 
+// An object
 const person = {
     name: "Linus",
     age: 50,
@@ -45,6 +46,7 @@ const person = {
     colors: colors
 };
 
+// Accessing an array withing an object
 console.log(person.colors[1]);
 
 console.log(`
@@ -55,6 +57,7 @@ console.log(`
 const getProperty = "age"; 
 console.log(person[getProperty]);
 
+// Array of Objects
 const persons = [
     { name: "Linus", likes: "C" },
     { name: "Fredde", likes: "JavaScript" },
@@ -63,6 +66,7 @@ const persons = [
 console.log(`${persons[0].name} likes ${persons[0].likes}`);
 console.log(`${persons[1].name} likes ${persons[1].likes}`);
 
+// Looping through an array of objects
 for (let i = 0; i < persons.length; i++) {
     let personStr = `<li>${i} - ${persons[i].name} likes ${persons[i].likes}</li>`;
     console.log(personStr);
