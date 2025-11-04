@@ -23,9 +23,10 @@ function pt() {
     console.log(ptOutput)
 }
 
-document.getElementById('btn-ok').addEventListener('click', function (evt) {
-    console.log(evt);
-    pt();
+
+
+document.getElementById('btn-ok').addEventListener('click', function () { 
+    pt(); 
 });
 
 
