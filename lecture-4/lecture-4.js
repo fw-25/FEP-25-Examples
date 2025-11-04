@@ -55,6 +55,20 @@ console.log(`
 const getProperty = "age"; 
 console.log(person[getProperty]);
 
+const persons = [
+    { name: "Linus", likes: "C" },
+    { name: "Fredde", likes: "JavaScript" },
+    { name: "Dennis", likes: "Robots"}
+];
+console.log(`${persons[0].name} likes ${persons[0].likes}`);
+console.log(`${persons[1].name} likes ${persons[1].likes}`);
+
+for (let i = 0; i < persons.length; i++) {
+    let personStr = `<li>${i} - ${persons[i].name} likes ${persons[i].likes}</li>`;
+    console.log(personStr);
+    document.getElementById("my-list").innerHTML += personStr;
+}
+
 
 
 
