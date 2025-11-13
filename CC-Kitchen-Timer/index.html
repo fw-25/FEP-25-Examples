@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Timer</title>
+</head>
+
+<body>
+    <h2>Kitchen timer 
+        <button id="btn-start">Start</button>
+        <button id="btn-stop">Stop</button>
+    </h2>
+    <input type="number" id="timer-input">
+    <h1 id="timer-output"></h1>
+
+
+    <script>
+        let secondsLeft;
+        let timer = null;
+
+        function timerOutput(output) {
+            document.getElementById("timer-output").innerText = output;
+        }
+
+        function kitchenTimer() {
+
+            if (timer !== null) return; // guard statement
+
+            secondsLeft = document.getElementById("timer-input").value;
+
+            timerOutput(secondsLeft);
+            timer = setInterval(() => {
+                secondsLeft--;
+                timerOutput(secondsLeft);
+
+                if (secondsLeft <= 0) {
+                    timerOutput("Time's up!");
+                    clearInterval(timer);
+                    timer = null;
+                }
+
+            }, 1000);
+        }
+
+        function stopTimer() {
+            timerOutput(`Timer stopped at ${secondsLeft}`);
+            clearInterval(timer);
+            timer = null;
+        }
+
+        document.getElementById("btn-start").addEventListener("click", kitchenTimer);
+        document.getElementById("btn-stop").addEventListener("click", stopTimer);
+
+    </script>
+
+</body>
+
+</html>
