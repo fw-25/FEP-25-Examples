@@ -17,7 +17,7 @@ function activateLight(lightNumber) {
     light.style.backgroundColor = COLORS[color]; // same as light.getAttribute("data-color")
 }
 
-// using recursion to create an acceleration
+// using recursion to create an acceleration effect
 function nextLight(delay) {
     if (delay < 100) delay = 100;
 

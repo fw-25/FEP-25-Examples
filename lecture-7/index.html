@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 7</title>
+</head>
+<body>
+    <div id="clock" style="font-size: 30px;"></div>
+    <div id="output" style="font-size: 30px; background-color: #ffffaa;">output...</div>
+
+    <form>
+        Text input: <input type="text" class="inp"><br>
+        Number input: <input type="number" class="inp"><br>
+        Password input: <input type="password" class="inp"><br>
+        Date input: <input type="date" class="inp"><br>
+        Range input: <input type="range" class="inp" min="0" max="99" step="5"><br>
+        Checkbox: <input type="checkbox" class="inp" value="Check"><br>
+        Radiobutton: 
+            <input type="radio" name="my-radio" class="inp" value="One" checked="checked">
+            <input type="radio" name="my-radio" class="inp" value="Two"><br>
+        Select:
+            <select class="inp">
+                <option value="1">One</option>
+                <option value="2" selected>Two</option>
+                <option value="3">Three</option>
+            </select><br>
+        Texarea:<br>
+            <textarea class="inp"></textarea>
+
+
+    </form>
+
+    <script>
+        for (const inp of document.querySelectorAll(".inp")) {
+            inp.addEventListener('input', () => {
+                let output = inp.value;
+
+                if (inp.getAttribute("type") === "checkbox"
+                    && inp.checked == false) {
+                    output = "-";
+                }
+
+                document.getElementById("output").textContent = output;
+            });
+        }
+
+        function clock() {
+            const time = new Date();
+            // add leading zeroes
+            const minute = String(time.getMinutes()).padStart(2, "0");
+            const second = String(time.getSeconds()).padStart(2, "0");
+
+            document.getElementById("clock").textContent = `
+                ${time.getHours()}:${minute}:${second}
+            `;
+        }
+        clock();
+        setInterval(clock, 1000);
+
+        const d = new Date();
+        console.log(`today is ${d.getDate()}.${d.getMonth()}.${d.getFullYear()}`);
+        console.log(d.toISOString()); // good way to store dates as text
+
+        const mayday = new Date(2026, 4, 1, 9, 30);
+        console.log(mayday);
+
+
+    </script>
+    
+</body>
+</html>
