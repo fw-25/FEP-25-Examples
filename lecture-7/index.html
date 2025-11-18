@@ -9,10 +9,11 @@
     <div id="clock" style="font-size: 30px;"></div>
     <div id="output" style="font-size: 30px; background-color: #ffffaa;">output...</div>
 
-    <form>
-        Text input: <input type="text" class="inp"><br>
+    <!--<form method="post" action="form-handler.php">-->
+    <form method="post">
+        Text input: <input name="my-text" type="text" class="inp"><br>
         Number input: <input type="number" class="inp"><br>
-        Password input: <input type="password" class="inp"><br>
+        Password input: <input name="password" type="password" class="inp"><br>
         Date input: <input type="date" class="inp"><br>
         Range input: <input type="range" class="inp" min="0" max="99" step="5"><br>
         Checkbox: <input type="checkbox" class="inp" value="Check"><br>
@@ -28,8 +29,11 @@
         Texarea:<br>
             <textarea class="inp"></textarea>
 
+        <br><button type="button" id="my-btn">My Button</button>
+        <br><button type="submit" id="my-submit">Submit form</button>
 
     </form>
+    <a href="lightbox.html">Lightbox</a>
 
     <script>
         for (const inp of document.querySelectorAll(".inp")) {
