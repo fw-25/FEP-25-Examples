@@ -25,8 +25,9 @@ document.querySelectorAll("#thumbnails img").forEach(thumb => {
         
     });
 });
-
+// Close the image on click
 document.getElementById("lightbox").addEventListener('click', closeLightbox);
+// close the image on Esc
 window.addEventListener('keydown', (evt) => {
     if (!document.getElementById("lightbox").classList.contains("hidden")
         && evt.key === "Escape") {
