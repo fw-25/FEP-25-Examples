@@ -5,19 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lightbox</title>
     <style>
+        .hidden {
+            display: none !important;
+        }
+        #thumbnails {
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+            gap: 5px;
+        }
         #thumbnails img {
             width: 200px;
         }
         #lightbox {
-            /* position: absolute; */
+            position: absolute;
             top: 0; left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0,0,0,.7);
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         #cursor-pos {
             position: absolute;
         }
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
     </style>
 </head>
 <body>
@@ -25,7 +42,7 @@
     <a href="index.html">Back to index</a>
 
     <div id="thumbnails"></div>
-    <div id="lightbox"></div>
+    <div id="lightbox" class="hidden"></div>
 
     <div id="cursor-pos"></div>
 

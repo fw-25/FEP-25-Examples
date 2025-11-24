@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Lecture 8</h2>
+    <p>Hello <span id="name"></span>! 
+        <button id="logout" type="button">Forget me</button>
+        <div id="visit-count"></div>
+    </p>
+    <p id="joke" style="font-family: 'Comic sans MS'; background-color: pink;"></p>
+    <button id="get-joke">Get a new joke</button>
+    <p id="info"></p>
+
+
+    <script>
+        // LocalStorage
+        let name = localStorage.getItem("user-name");
+        if (!name) {
+            name = prompt("What's your name?");
+            localStorage.setItem("user-name", name);
+        }
+        document.getElementById("name").innerText = name;
+
+        document.getElementById("logout"). addEventListener("click", () => {
+            localStorage.removeItem("user-name");
+            localStorage.removeItem("visitCount");
+            location.reload(); // reload the page
+        });
+        
+        // Numbers and localStorage
+        const visitCount = localStorage.getItem("visitCount") || 1;
+        document.getElementById("visit-count").textContent = `
+            You've visited this page ${visitCount} times
+        `;
+        localStorage.setItem("visitCount", Number(visitCount)+1);
+
+        // Synchronous code
+        function two() {
+            for (let index = 0; index < 10000; index++) {
+                console.log("..."); 
+            }
+            console.log("Two");
+        }
+        console.log("One");
+        two();
+        console.log("Three");
+
+        // Asynchronous code
+        console.log(1);
+        setTimeout(() => console.log(2), 100); 
+        console.log(3); // will not wait for "2" to finish
+ 
+        // fetch()
+        async function getInfoText() {
+            const resp = await fetch("info.txt");
+            const infoText = await resp.text();
+            document.getElementById("info").innerHTML = infoText;
+            document.getElementById("title").style.color = "red";
+        }
+
+        async function getJoke() {
+            const resp = await fetch("https://icanhazdadjoke.com/", {
+                headers: { "Accept": "text/plain" }
+            });
+            const jokeText = await resp.text();
+            document.getElementById("joke").textContent = jokeText;
+        }
+
+        document.getElementById("get-joke").addEventListener('click', getJoke);
+        getJoke();
+        getInfoText();
+
+    </script>
+</body>
+</html>

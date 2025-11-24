@@ -1,4 +1,4 @@
-const IMAGES = [16, 28, 69, 51];
+const IMAGES = [16, 28, 69, 51, 49, 61];
 for (const imgId of IMAGES) {
     document.getElementById("thumbnails").innerHTML += `
         <img data-id="${imgId}" 
@@ -6,14 +6,23 @@ for (const imgId of IMAGES) {
     `;
 }
 
+function openLightbox() {
+    document.getElementById("lightbox").classList.remove("hidden");
+}
+function closeLightbox() {
+    document.getElementById("lightbox").classList.add("hidden");
+}
+
 document.querySelectorAll("#thumbnails img").forEach(thumb => {
     console.log(thumb);
     thumb.addEventListener('click', () => {
         const imgId = thumb.dataset.id;
-        //console.log(imgId)
+        
         document.getElementById("lightbox").innerHTML = `
             <img src="./lightbox-img/img-0${imgId}.png">
         `;
+        openLightbox();
+        
     });
 });
 
@@ -24,3 +33,13 @@ document.addEventListener("mousemove", (evt) => {
 
     document.getElementById("cursor-pos").innerText = `left: ${evt.clientX}px; top: ${evt.clientY}px`;
 })
+// Close the image on click
+document.getElementById("lightbox").addEventListener('click', closeLightbox);
+// close the image on Esc
+window.addEventListener('keydown', (evt) => {
+    if (!document.getElementById("lightbox").classList.contains("hidden")
+        && evt.key === "Escape") {
+        closeLightbox();
+    }
+    
+});
