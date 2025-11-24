@@ -26,13 +26,7 @@ document.querySelectorAll("#thumbnails img").forEach(thumb => {
     });
 });
 
-// Getting the cursor position
-document.addEventListener("mousemove", (evt) => {
-    document.getElementById("cursor-pos").style.left = `${evt.clientX}px`;
-    document.getElementById("cursor-pos").style.top = `${evt.clientY}px`;
 
-    document.getElementById("cursor-pos").innerText = `left: ${evt.clientX}px; top: ${evt.clientY}px`;
-})
 // Close the image on click
 document.getElementById("lightbox").addEventListener('click', closeLightbox);
 // close the image on Esc
@@ -43,3 +37,11 @@ window.addEventListener('keydown', (evt) => {
     }
     
 });
+
+// Getting the cursor position (added later)
+document.addEventListener("mousemove", (evt) => {
+    document.getElementById("cursor-pos").style.left = `${evt.clientX}px`;
+    document.getElementById("cursor-pos").style.top = `${evt.clientY}px`;
+
+    document.getElementById("cursor-pos").innerText = `left: ${evt.clientX}px; top: ${evt.clientY}px`;
+})
