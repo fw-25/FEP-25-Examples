@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecture 11</title>
 </head>
+
 <body>
     <div id="out"></div>
+    <div id="weather-out"></div>
 
     <script>
         function dateOutput() {
@@ -27,7 +30,36 @@
             document.getElementById("out").innerText += date.toDateString();
         })();
 
+
+        // Impure function
+        async function getWeather() {
+            const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=60&longitude=25&current_weather=true&windspeed_unit=ms");
+            const weatherData = await res.json();
+
+            document.getElementById("weather-out").textContent = `
+                Temperature is ${weatherData.current_weather.temperature}°C 
+            `;
+
+        }
+        getWeather();
+
+        // Pure function
+        function weatherText(weatherData) {
+            return `Temperature is ${weatherData.current_weather.temperature}°C`;
+        }
+        // Impure code separately
+        (async () => {
+            // fetch takes a value that can change
+            const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=60&longitude=25&current_weather=true&windspeed_unit=ms");
+            const weatherData = await res.json();
+
+            // Side effect changes DOM
+            document.getElementById("weather-out").textContent = weatherText(weatherData);
+
+        })();
+
     </script>
-    
+
 </body>
+
 </html>
