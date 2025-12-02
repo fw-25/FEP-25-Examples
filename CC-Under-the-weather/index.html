@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under the Weather</title>
+</head>
+<body>
+    <b id="out"></b>
+
+    <script>
+    async function getWeather() {
+        const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=60&longitude=25&current_weather=true&windspeed_unit=ms");
+        const weatherData = await res.json();
+
+        const curWeather = weatherData.current_weather;
+
+        console.log(curWeather.temperature);
+
+        //const coldWarm = curWeather.temperature < 15 ? "cold" : "warm";
+
+        document.getElementById("out").textContent = `
+            Temperature is ${curWeather.temperature}°C 
+            and the wind speed is ${curWeather.windspeed} m/s.
+            It is ${curWeather.temperature < 15 ? "cold" : "warm"} outside.
+        `;
+
+    }
+    getWeather();
+    </script>
+    
+    
+</body>
+</html>
