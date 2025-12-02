@@ -6,7 +6,28 @@
     <title>Lecture 11</title>
 </head>
 <body>
-    
+    <div id="out"></div>
+
+    <script>
+        function dateOutput() {
+            const date = new Date()
+            document.getElementById("out").innerText = date.toDateString();
+        }
+        dateOutput();
+
+        // IIFE (traditional syntax)
+        (function () {
+            const date = new Date()
+            document.getElementById("out").innerText += date.toDateString();
+        })();
+
+        // IIFE (arrow syntax)
+        (() => {
+            const date = new Date()
+            document.getElementById("out").innerText += date.toDateString();
+        })();
+
+    </script>
     
 </body>
 </html>

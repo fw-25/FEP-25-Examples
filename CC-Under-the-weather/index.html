@@ -9,7 +9,7 @@
     <b id="out"></b>
 
     <script>
-    async function getWeather() {
+    (async () => {
         const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=60&longitude=25&current_weather=true&windspeed_unit=ms");
         const weatherData = await res.json();
 
@@ -25,8 +25,7 @@
             It is ${curWeather.temperature < 15 ? "cold" : "warm"} outside.
         `;
 
-    }
-    getWeather();
+    })();
     </script>
     
     
